@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multiplication Table Generator</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+  table {
+    margin: 20px auto;
+    border-collapse: collapse;
+  }
+  th, td {
+    padding: 8px;
+    border: 1px solid #ddd;
+  }
+</style>
+</head>
+<body>
+  <h1>Multiplication Table Generator</h1>
+  <input type="number" id="numberInput" placeholder="Enter a number">
+  <button onclick="generateTable()">Generate Table</button>
+  <div id="tableContainer"></div>
+
+  <script>
+    function generateTable() {
+      var number = parseInt(document.getElementById("numberInput").value);
+      var tableContainer = document.getElementById("tableContainer");
+      var tableHTML = "<table><tbody>";
+
+      if (!isNaN(number)) {
+        for (var i = 1; i <= 10; i++) {
+          var result = number * i;
+          tableHTML += "<tr><td>" + number + " x " + i + "</td><td>" + result + "</td></tr>";
+        }
+        tableHTML += "</tbody></table>";
+        tableContainer.innerHTML = tableHTML;
+      } else {
+        tableContainer.textContent = "Please enter a valid number.";
+      }
+    }
+  </script>
+</body>
+</html>

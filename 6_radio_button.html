@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+    .question {
+        margin-bottom: 20px;
+    }
+</style>
+</head>
+<body>
+
+<h1>Quiz</h1>
+
+<div class="question">
+    <p>1. What is the capital of France?</p>
+    <input type="radio" name="q1" value="paris"> Paris<br>
+    <input type="radio" name="q1" value="london"> London<br>
+    <input type="radio" name="q1" value="berlin"> Berlin<br>
+</div>
+
+<div class="question">
+    <p>2. What is the largest planet in our solar system?</p>
+    <input type="radio" name="q2" value="mars"> Mars<br>
+    <input type="radio" name="q2" value="jupiter"> Jupiter<br>
+    <input type="radio" name="q2" value="venus"> Venus<br>
+</div>
+
+<div class="question">
+    <p>3. Who wrote "Romeo and Juliet"?</p>
+    <input type="radio" name="q3" value="shakespeare"> Shakespeare<br>
+    <input type="radio" name="q3" value="tolstoy"> Tolstoy<br>
+    <input type="radio" name="q3" value="dostoevsky"> Dostoevsky<br>
+</div>
+
+<button onclick="calculateScore()">Submit</button>
+
+<div id="result"></div>
+
+<script>
+function calculateScore() {
+    // Array to store correct answers
+    var correctAnswers = ["paris", "jupiter", "shakespeare"];
+    var score = 0;
+
+    // Loop through each question
+    for (var i = 1; i <= 3; i++) {
+        // Get selected answer
+        var selectedAnswer = document.querySelector('input[name="q' + i + '"]:checked');
+
+        // If an answer is selected, check if it's correct
+        if (selectedAnswer) {
+            if (selectedAnswer.value === correctAnswers[i - 1]) {
+                score++;
+            }
+        }
+    }
+
+    // Display score
+    var resultDiv = document.getElementById('result');
+    resultDiv.innerHTML = "<h2>Your score is: " + score + " out of 3</h2>";
+}
+</script>
+
+</body>
+</html>
